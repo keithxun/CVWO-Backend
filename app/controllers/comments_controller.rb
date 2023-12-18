@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
     before_action :set_post
-  
+    before_action :authenticate_user!, except: [:index, :create]
     def index
       @comments = @post.comments
       render json: @comments
@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
       if @comment.save
         render json: @comment, status: :created
       else
+        puts "Post validation errors:", @post.errors.full_messages
         render json: @comment.errors, status: :unprocessable_entity
       end
     end

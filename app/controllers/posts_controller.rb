@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
     before_action :set_post, only: [:show, :update, :destroy]
-  
+    before_action :authenticate_user!, except: [:index, :show, :create]
+
     def index
       @posts = Post.all
       render json: @posts
@@ -25,6 +26,7 @@ class PostsController < ApplicationController
       if @post.update(post_params)
         render json: @post
       else
+        puts "Post validation errors:", @post.errors.full_messages
         render json: @post.errors, status: :unprocessable_entity
       end
     end

@@ -27,6 +27,7 @@ module BlogApp
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w(assets tasks))
+    config.middleware.use ActionDispatch::Session::CookieStore, key: '_app_session'
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins 'http://localhost:3001' # Update with the actual URL of your React app
