@@ -16,6 +16,7 @@ class PostsController < ApplicationController
       if @post.save
         render json: @post, status: :created
       else
+        puts "Post validation errors:", @post.errors.full_messages
         render json: @post.errors, status: :unprocessable_entity
       end
     end
