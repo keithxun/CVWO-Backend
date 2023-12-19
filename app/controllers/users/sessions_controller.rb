@@ -9,18 +9,9 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
   def create
-    user = User.find_by(email: params[:user][:email])
-    if user && user.valid_password?(params[:user][:password])
-      sign_in(user)
-      redirect_to root_path, notice: 'Signed in successfully.'
-    else
-      flash.now[:alert] = 'Invalid email or password.'
-      render :new
-    end
+    Rails.logger.error("Error creating user: #{resource.errors.full_messages}")
+    super
   end
 
   # DELETE /resource/sign_out

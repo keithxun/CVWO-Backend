@@ -9,7 +9,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
 
-  # POST /resource
+  #POST /resource
   # def create
   #   super
   # end
@@ -64,9 +64,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   params.require(:user).permit(:email, :password)
   # end
 
-  def build_resource(hash = nil)
-    self.resource = resource_class.new_with_session(hash || {}, session)
-  end
+  # def build_resource(hash = nil)
+  #   self.resource = resource_class.new_with_session(hash || {}, session)
+  # end
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
