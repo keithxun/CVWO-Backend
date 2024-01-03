@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get '/current_user', to: 'current_user#index'
+  # get '/current_user', to: 'current_user#index'
   resources :posts do
     resources :comments
   end
