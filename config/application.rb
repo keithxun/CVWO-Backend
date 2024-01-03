@@ -28,12 +28,6 @@ module BlogApp
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w(assets tasks))
     config.middleware.use ActionDispatch::Session::CookieStore, key: '_app_session'
-    config.middleware.insert_before 0, Rack::Cors do
-      allow do
-        origins 'http://localhost:3001' # Update with the actual URL of your React app
-        resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head]
-      end
-    end
     
     # Configuration for the application, engines, and railties goes here.
     #

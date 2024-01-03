@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
     before_action :set_post
-    before_action :authenticate_user!, except: [:index, :create]
+    before_action :authenticate_user!, except: [:index]
     def index
       @comments = @post.comments
       render json: @comments
