@@ -14,5 +14,4 @@ Rails.application.routes.draw do
   }
   #root "posts#index"
 end
-#http://localhost:3000/rails/info/routes 
  
